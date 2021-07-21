@@ -2,6 +2,38 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    .notes_content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 20px;
+
+        .notes_title-input,
+        .notes_textarea {
+            border: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .notes_title-input {
+            color: $dark-grey;
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .notes_textarea {
+            color: $dark-grey;
+            font-size: 20px;
+            flex: 1 1 auto;
+            resize: none;
+        }
+        .notes_image {
+            box-shadow: 1px 1px 7px $dark-grey;
+            height: 150px;
+        }
+    }
 }
 
 .notes_appbar {
