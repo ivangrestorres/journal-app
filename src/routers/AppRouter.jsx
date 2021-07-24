@@ -1,18 +1,53 @@
-import React from 'react'
-import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
-import { JournalPage } from '../components/journal/JournalPage'
-import { AuthRouter } from './AuthRouter'
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
+import { firebase } from "../firebase/firebase-config";
+
+import { JournalPage } from "../components/journal/JournalPage";
+import { AuthRouter } from "./AuthRouter";
+import { useDispatch } from "react-redux";
+import { login } from "../actions/auth";
+import { useState } from "react";
+import { PublicRoute } from "./PublicRoute";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const AppRouter = () => {
+    const dispatch = useDispatch();
+
+    const [checking, setChecking] = useState(true);
+    const [isLoogedIn, setIsLoogedIn] = useState(false);
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user?.uid) {
+                dispatch(login(user.uid, user.displayName));
+                setIsLoogedIn(true);
+            } else {
+                setIsLoogedIn(false);
+            }
+            setChecking(false);
+        });
+    }, [dispatch, setChecking, setIsLoogedIn]);
+
+    if (checking) return <h1>Espere...</h1>;
+
     return (
         <Router>
             <div>
-            <Switch>
-                    <Route path={"/auth"} component={AuthRouter} />
-                    <Route exact path={"/"} component={JournalPage} />
+                <Switch>
+                    <PrivateRoute
+                        exact
+                        path={"/"}
+                        isAuthenticated={isLoogedIn}
+                        component={JournalPage}
+                    />
+                    <PublicRoute
+                        path={"/auth"}
+                        isAuthenticated={isLoogedIn}
+                        component={AuthRouter}
+                    />
                     <Redirect to={"auth/login"} />
                 </Switch>
             </div>
         </Router>
-    )
-}
+    );
+};
