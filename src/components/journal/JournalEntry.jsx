@@ -1,29 +1,39 @@
 import React from "react";
+import moment from "moment";
+import { useDispatch } from "react-redux";
+import { activeNote } from "../../actions/notes";
 
-export const JournalEntry = () => {
+export const JournalEntry = ({ id, title, body, url, date }) => {
+    const dispatch = useDispatch();
+    const noteDate = moment(date);
+
+    const handleOnClick = () => {
+        dispatch(activeNote(id, { title, body, url, date }));
+    };
+
     return (
-        <div className={"journal_entry"}>
-            <div
-                className="journal_entry-picture"
-                style={{
-                    backgroundSize: "cover",
-                    backgroundImage:
-                        "url(https://st3.depositphotos.com/1813774/19042/i/600/depositphotos_190424116-stock-photo-historical-medieval-city-along-the.jpg)",
-                }}
-            ></div>
+        <div
+            onClick={handleOnClick}
+            className={
+                "journal_entry animate__animated animate__fadeIn animate__faster"
+            }
+        >
+            {url && (
+                <div
+                    className="journal_entry-picture"
+                    style={{
+                        backgroundSize: "cover",
+                        backgroundImage: `url(${url})`,
+                    }}
+                ></div>
+            )}
             <div className={"journal_entry-body"}>
-                <p className={"journal_entry-title"}>Un nuevo dia</p>
-                <p className={"journal_entry-content"}>
-                    Est sint officia fugiat irure anim magna aliquip sit qui
-                    mollit enim nisi occaecat anim. Ut duis aute mollit culpa
-                    deserunt eiusmod incididunt aute cillum officia non. Aute
-                    nisi aute anim in dolor et anim eu. Officia duis dolore
-                    pariatur ut elit cupidatat dolor nostrud.
-                </p>
+                <p className={"journal_entry-title"}>{title}</p>
+                <p className={"journal_entry-content"}>{body}</p>
             </div>
             <div className={"journal_entry-date-box"}>
-                <span>Monday</span>
-                <h4>28</h4>
+                <span>{noteDate.format("ddd")}</span>
+                <h4>{noteDate.format("Do")}</h4>
             </div>
         </div>
     );

@@ -46,7 +46,10 @@ export const RegisterPage = () => {
     return (
         <div>
             <h3 className={"auth_title"}>Register</h3>
-            <form onSubmit={handleRegister}>
+            <form
+                onSubmit={handleRegister}
+                className={"animate__animated animate__fadeIn animate__faster"}
+            >
                 {msgError && (
                     <div className={"auth_alert-error"}>{msgError}</div>
                 )}

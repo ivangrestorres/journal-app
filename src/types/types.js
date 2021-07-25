@@ -3,4 +3,11 @@ export const types = {
     logout: "[Auth] Logout",
     uiStartLoading: "[UI] Start loading",
     uiFinishLoading: "[UI] Finish loading",
+    notesAddNew: "[Notes] Add note",
+    notesActive: "[Notes] Set active note",
+    notesLoad: "[Notes] Load notes",
+    notesUpdated: "[Notes] Update notes",
+    notesFileUrl: "[Notes] Update image url",
+    notesDelete: "[Notes] Delete note",
+    notesLogoutCleaning: "[Notes] Logout cleaning",
 };

@@ -31,7 +31,10 @@ export const LoginPage = () => {
             {msgLoginError && (
                 <div className={"auth_alert-error"}>{msgLoginError}</div>
             )}
-            <form onSubmit={handleLogin}>
+            <form
+                onSubmit={handleLogin}
+                className={"animate__animated animate__fadeIn animate__faster"}
+            >
                 <input
                     type="text"
                     placeholder={"Email"}
