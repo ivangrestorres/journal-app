@@ -9,8 +9,8 @@ export const LoginPage = () => {
     const { loading, msgLoginError } = useSelector((state) => state.ui);
 
     const initialForm = {
-        email: "kk@gmail.com",
-        password: "12345aA",
+        email: "",
+        password: "",
     };
     const [formValues, handleInputChange] = useForm(initialForm);
 

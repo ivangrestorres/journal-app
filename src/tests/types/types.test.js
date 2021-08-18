@@ -1,0 +1,19 @@
+import { types } from "../../types/types";
+
+describe("Pruebas types", () => {
+    test("should have types", () => {
+        expect(types).toEqual({
+            login: "[Auth] Login",
+            logout: "[Auth] Logout",
+            uiStartLoading: "[UI] Start loading",
+            uiFinishLoading: "[UI] Finish loading",
+            notesAddNew: "[Notes] Add note",
+            notesActive: "[Notes] Set active note",
+            notesLoad: "[Notes] Load notes",
+            notesUpdated: "[Notes] Update notes",
+            notesFileUrl: "[Notes] Update image url",
+            notesDelete: "[Notes] Delete note",
+            notesLogoutCleaning: "[Notes] Logout cleaning",
+        });
+    });
+});

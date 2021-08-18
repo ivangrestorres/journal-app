@@ -11,10 +11,10 @@ export const RegisterPage = () => {
     const { msgError } = useSelector((state) => state.ui);
 
     const initialForm = {
-        name: "Ivan",
-        email: "kk@gmail.com",
-        password: "12345aA",
-        password2: "12345aA",
+        name: "",
+        email: "",
+        password: "",
+        password2: "",
     };
 
     const [formValues, handleInputChange] = useForm(initialForm);
