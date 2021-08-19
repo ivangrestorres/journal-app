@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas <JournalEntry /> debe de mostrar correctamente 1`] = `
+<div
+  className="journal_entry animate__animated animate__fadeIn animate__faster"
+  onClick={[Function]}
+>
+  <div
+    className="journal_entry-body"
+  >
+    <p
+      className="journal_entry-title"
+    >
+      Hola
+    </p>
+    <p
+      className="journal_entry-content"
+    >
+      Mundo
+    </p>
+  </div>
+  <div
+    className="journal_entry-date-box"
+  >
+    <span>
+      Thu
+    </span>
+    <h4>
+      1st
+    </h4>
+  </div>
+</div>
+`;
